@@ -1,0 +1,14 @@
+We plan to use an Amazon review dataset that is 18 GB and sorted by user, with duplicate reviews already removed. 
+The link below contains accessible subsets of the big dataset, sorted by category of goods (eg. Books, Electronics, etc). 
+We have emailed the owner of the big dataset to request for the 18 GB dataset.
+
+Link to Dataset: http://jmcauley.ucsd.edu/data/amazon/
+
+Below are some questions we hope to answer by analyzing the data:
+
+1.) Is there a tendency for a user to leave positive or negative reviews?
+2.) Is there a correlation between the number of categorical goods reviews for a user and whether 
+their reviews are positive or negative?
+3.) Do users tend to use the same positive or negative descriptives?
+4.) Correlation between the descriptive words and the helpfulness of the review. What kind of words do helpful reviews
+use? What kind of words do unhelpful reviews use?
