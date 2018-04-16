@@ -19,3 +19,5 @@ use? What kind of words do unhelpful reviews use?
 descriptive words and give each pairing a simiarity score. We want to then look at the pairs with very high similarity scores
 and compare their helpfulness points to see if using certain descriptives words give reviewers a higher helpfulness score or
 lower helpfulness score. 
+6.) We also want to find two reviews from two different reviewers that are very similar to each other and see whether that 
+means that the rest of their reviews are also very similar to each other.
