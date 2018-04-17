@@ -1,4 +1,5 @@
 Group Members: Michelle Liang, Josef Klafka, Timmy Li, Jon Pekarek
+Group Name: Amazon Reviews
 
 We plan to use an Amazon review dataset that is 18 GB and sorted by user, with duplicate reviews already removed. 
 The dataset is a json file that contains 83.68 million reviews.
