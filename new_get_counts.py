@@ -8,6 +8,7 @@ class GetCount(MRJob):
     def init_get_words(self):
         df = pd.read_csv("/home/student/output.txt", delimiter="\t", header=None)
         self.word_dict = dict(zip(df[0], df[1]))
+        self.num_words = len(self.word_dict)
 
     def mapper(self, key, line):
         l = eval(line)
@@ -23,12 +24,12 @@ class GetCount(MRJob):
                     current_dict[str(self.word_dict[word])] += 1
                 else:
                     current_dict[str(self.word_dict[word])] = 1
-        yield None, (ref_dict, current_dict)
+        yield self.num_words, (ref_dict, current_dict)
 
-    def reducer_file(self, _, value):
+    def reducer_file(self, key, value):
         dict_list = list(value)
         ref_list = []
-        big_matrix = lil_matrix((len(dict_list), 70000))
+        big_matrix = lil_matrix((len(dict_list), key))
         for i in range(len(dict_list)):
             for x in dict_list[i][1]:
                 big_matrix[i, x] = dict_list[i][1][x]
