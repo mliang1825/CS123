@@ -17,12 +17,14 @@ class GetPercentBelowThreshold(MRJob):
         self.add_file_option('--threshold')
         self.add_file_option('--subtraction')
 
+
     def mapper_get_counts(self, _, line):
         entries = line.split()
         index1 = int(entries[0].strip("[]").strip(","))
         index2 = int(entries[1].strip("]"))
         val = float(entries[2])
         yield (index1,index2), val
+
 
     def reducer_get_counts_init(self):
         with open(self.options.threshold, 'r') as f:
@@ -32,12 +34,14 @@ class GetPercentBelowThreshold(MRJob):
             number = s.readline().split()[0]
         self.subtraction = float(number)
 
+
     def reducer_get_counts(self, indexes, val):
         val = list(val)[0]
         if val < (self.threshold - self.subtraction):
             yield None, 1
         else: 
             yield None, 0
+
 
     def reducer_merge_counts(self, _, nums):
         summ = 0
@@ -47,6 +51,7 @@ class GetPercentBelowThreshold(MRJob):
             count += 1
         yield None, summ/count
 
+
     def steps(self):
         return [
         MRStep(mapper=self.mapper_get_counts,
@@ -54,6 +59,7 @@ class GetPercentBelowThreshold(MRJob):
              reducer=self.reducer_get_counts),
         MRStep(reducer=self.reducer_merge_counts)
         ]
+
 
 if __name__ == '__main__':
     GetPercentBelowThreshold.run()
