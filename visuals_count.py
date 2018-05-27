@@ -30,7 +30,7 @@ p2.vbar(x = 'threshold',top = 'counts', source = source_reviewer_id, width = 0.5
 p3 = figure(title = 'Difference in Counts Between Thresholds Product ID', y_axis_label = 'Difference')
 p3.vbar(x = [n for n in range(1,21)], top = differences, width = 0.5)
 
-p4 = figure(title = 'Difference in Counts Between Thresholds Product ID', y_axis_label = 'Difference')
+p4 = figure(title = 'Difference in Counts Between Thresholds Reviewer ID', y_axis_label = 'Difference')
 p4.vbar(x = [n for n in range(1,21)], top = differences2, width = 0.5, fill_color = 'red')
 grid = gridplot([[p1,p2],
                  [p3,p4]])
