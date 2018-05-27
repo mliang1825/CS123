@@ -1,6 +1,11 @@
 from mrjob.job import MRJob
 
 class FilterAllBelowAvg(MRJob):
+    '''
+    This file is a precursor for threshold_count.py. The file takes the output
+    of pairings.py and counts all the pairs that are below the average. The average
+    is specified in a avg.txt file put in with the argument --threshold.
+    '''
 
     def configure_options(self):
         super(FilterAllBelowAvg, self).configure_options()
