@@ -6,7 +6,8 @@ The purpose of this MapReduce code is to count the number of pair reviews that
 were for the same product or came from the same person. 'asin' refers to the
 product ID and reviewerID refers to the reviewerid. We express these numbers
 for vector distances below various thresholds (1 - 23). Note that the average
-vector distance is 22.9.
+vector distance is 22.9. The file takes an extra file argument, --index.
+The index file is a three column csv in the format (row, asin/product id, reviewerid).
 '''
 
 THRESHOLDS = [n for n in range(1,24)]
