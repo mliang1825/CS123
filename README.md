@@ -7,7 +7,7 @@ pmapreduce.py - yields the counts of all words for each review in a sparse matri
 
 pairing.py- Takes sparse matrix file, pairs up all rows, and calculates the distance between word vectors.
 
-threshold_count.py - Takes the output of pairings.py, for a variety of thresholds, calculated the number of matching product ids and the number of matching reviewer ids for the pairs with distances below that threshold.
+threshold_counts.py - Takes the output of pairings.py, for a variety of thresholds, calculated the number of matching product ids and the number of matching reviewer ids for the pairs with distances below that threshold.
 
 GetTop40Words.py - Takes an Amazon reviews JSON file and filters to find the top 40 unique words.
 
@@ -34,7 +34,7 @@ matchings.csv - csv file for the counts of matching productid/reviewerid below e
 
 vocab.txt - 60000-word vocabulary used as the basis for the columns in the matrix
 
-percents_viz.html - Visualizationo in percents.
+percents_viz.html - Visualization in percents.
 
 reviews_index.csv - Index file indicating the row within the matrix, the product id, and the reviewerid
 
