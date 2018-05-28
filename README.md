@@ -26,7 +26,7 @@ visuals_count.py -
 visuals_percents.py -
 
 ### Other files - description
-CS 123, Proposal.pdf
+CS 123, Proposal.pdf - Project Proposal
 
 avg.txt - Contains the average distance between the rows in the words_matrix
 	
@@ -34,9 +34,9 @@ counts_viz.html -
 
 matchings.csv - 
 
-output.txt - 
+vocab.txt - 60000-word vocabulary used as the basis for the columns in the matrix
 	
-percents_viz.html	- 
+percents_viz.html - 
 
 reviews_index.csv - 
 	 	
