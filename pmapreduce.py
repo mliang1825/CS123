@@ -1,18 +1,38 @@
-from scipy.sparse import lil_matrix, coo_matrix, bmat
+from scipy.sparse import lil_matrix
 from scipy.io import mmwrite
 from mrjob.job import MRJob
 import pandas as pd
 from mrjob.step import MRStep
-import os
 import csv
 
 class GetCount(MRJob):
+    '''
+    Takes a json file with amazon review data and uses the word processing
+    output to create a sparse matrix with counts of each word in each review
+    and a file mapping the rows in the sparse matrix to the review data
+    '''
+    def configure_options(self):
+        '''
+        Three command line options, which are the word processing results and 
+        the two desired output filenames
+        --words: the output from the word processing task
+        --index: the output filename for the row index to review mapping file
+        --matrix: the output filename for the sparse matrix
+        '''
+        super(GetCount, self).configure_options()
+        self.add_passthrough_option(
+        '--words', type='str', default="output.txt")
+        self.add_passthrough_option(
+        '--index', type='str', default="reviews_index.csv")
+        self.add_passthrough_option(
+        '--matrix', type='str', default="words_matrix.mtx")
+
     def init_get_words(self):
         '''
         Creates the dictionary of words to reference and the dictionary length
         Reads the output file from the word processing script
         '''
-        df = pd.read_csv("~/output.txt", delimiter="\t", header=None)
+        df = pd.read_csv(self.options.words, delimiter="\t", header=None)
         self.word_dict = dict(zip(df[0], df[1]))
         self.num_words = len(self.word_dict)
 
@@ -29,7 +49,6 @@ class GetCount(MRJob):
         asin = l["asin"]
         review = l["reviewText"].lower().split(" ")
         ref_dict = {"reviewerID": reviewerID, "asin": asin}
-        #sparse_block = lil_matrix((1,len(self.word_dict)))
         current_dict = {}
         for word in review:
             if word in self.word_dict:
@@ -53,12 +72,10 @@ class GetCount(MRJob):
             for x in dict_list[i][1]:
                 big_matrix[i, x] = dict_list[i][1][x]
             ref_list.append((i, dict_list[i][0]["asin"], dict_list[i][0]["reviewerID"]))
-        #output = "\n".join(ref_list)
-        #print(os.getcwd())
-        with open("/home/jonpekarek/reviews_index.csv", "w+") as f:
+        with open(self.options.index, "w+") as f:
             writer = csv.writer(f)
             writer.writerows(ref_list)
-        mmwrite("/home/jonpekarek/words_matrix.mtx", big_matrix, field = "integer")
+        mmwrite(self.options.matrix, big_matrix, field = "integer")
 
     def steps(self):
         return [MRStep(mapper_init=self.init_get_words,
