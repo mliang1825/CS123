@@ -47,6 +47,6 @@ percents_viz.html - Visualization in percents.
 
 reviews_index.csv - Index file indicating the row within the matrix, the product id, and the reviewerid
 
-words_matrix.mtx - a test file.
+words_matrix.mtx - Contains sparse matrix of reviews and word counts.
 
 total_thresh_counts.csv - csv file for the total counts below each threshold.
