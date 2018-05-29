@@ -23,8 +23,10 @@ visuals_count.py - Creates visualizations for counts. (Created counts_viz.html)
 
 visuals_percents.py - Creates visualizations for percents. (created percents_viz.html)
 
+percent_compare.py - Creates the visualization for percents_viz.html
+
 ### Other files - description
-Final Report.pdf - Final Project Report 
+Final Report.pdf - Final Project Report
 
 Amazon Reviews Presentation.pptx - Project Presentation
 
@@ -33,6 +35,9 @@ CS 123, Proposal.pdf - Project Proposal
 avg.txt - Contains the average distance between the rows in the words_matrix
 
 counts_viz.html - Visualizations in counts.
+
+percents_viz.html - Visualization of the Percentage of Pairs with distance below threshold and
+had the same product id/ reviewer id.
 
 matchings.csv - csv file for the counts of matching productid/reviewerid below each threshold.
 
